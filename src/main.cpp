@@ -14,7 +14,6 @@ const complex<double> I(0, 1);
 
 int main()
 { 
-	cout << "Programm running" << endl;
 	double tf = 10.0;
 	int Nt = 1000;
 	int dim = 1 << 10;
