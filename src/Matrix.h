@@ -17,6 +17,9 @@ public:
 	complex<double>& operator()(int i, int j) {
 		return elem[i][j];
 	}
+	complex<double> operator()(int i, int j) const {
+		return elem[i][j];
+	}
 	int size() const { return dim; }
 	void write_bin(std::ofstream& file) const {
 		for (auto row = elem.begin(); row != elem.end(); row++) {
@@ -30,4 +33,23 @@ public:
 		}
 		return tr;
 	}
+	Matrix& operator+(const Matrix& other) {
+		Matrix res(dim);
+		for (int i = 0; i < dim; i++) {
+			for (int j = 0; j < dim; j++) {
+				res(i, j) = this->elem[i][j] + other.elem[i][j];
+			}
+		}
+		return res;
+	}
+	friend Matrix& operator*(complex<double> x, Matrix& M) {
+		Matrix res(M.size());
+		for (int i = 0; i < M.size(); i++) {
+			for (int j = 0; j < M.size(); j++) {
+				res(i, j) = x * M(i, j);
+			}
+		}
+		return res;
+	}
 };
+

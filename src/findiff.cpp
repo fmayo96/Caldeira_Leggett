@@ -5,7 +5,7 @@ const int num_coeff = 5;
 const double coeff_first[] = { 1 / 12.0, -2 / 3.0, 0, 2 / 3.0, -1 / 12.0 };
 const double coeff_second[] = { -1 / 12.0, 4 / 3.0, -5/2.0, 4 / 3.0, -1 / 12.0 };
 
-complex<double> diff_x(Matrix& state, double dx, int i, int j) {
+complex<double> diff_x(const Matrix& state, double dx, int i, int j) {
 	// computes the first derivative of state(i,j) with respect to x using centered finite differemces
 	// with 4th order accuracy.
 	int dim = state.size();
@@ -15,7 +15,7 @@ complex<double> diff_x(Matrix& state, double dx, int i, int j) {
 	}
 	return df_dx;
 }
-complex<double> diff_y(Matrix& state, double dy, int i, int j) {
+complex<double> diff_y(const Matrix& state, double dy, int i, int j) {
 	// computes the first derivative of state(i,j) with respect to y using centered finite differemces
 	// with 4th order accuracy.
 	int dim = state.size();
@@ -25,7 +25,7 @@ complex<double> diff_y(Matrix& state, double dy, int i, int j) {
 	}
 	return df_dy;
 }
-complex<double> diff_xx(Matrix& state, double dx, int i, int j) {
+complex<double> diff_xx(const Matrix& state, double dx, int i, int j) {
 	// computes the first derivative of state(i,j) with respect to x using centered finite differemces
 	// with 4th order accuracy.
 	int dim = state.size();
@@ -35,7 +35,7 @@ complex<double> diff_xx(Matrix& state, double dx, int i, int j) {
 	}
 	return df_dxx;
 }
-complex<double> diff_yy(Matrix& state, double dy, int i, int j) {
+complex<double> diff_yy(const Matrix& state, double dy, int i, int j) {
 	// computes the first derivative of state(i,j) with respect to y using centered finite differemces
 	// with 4th order accuracy.
 	int dim = state.size();
