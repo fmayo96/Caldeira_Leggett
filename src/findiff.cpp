@@ -26,7 +26,7 @@ complex<double> diff_y(const Matrix& state, double dy, int i, int j) {
 	return df_dy;
 }
 complex<double> diff_xx(const Matrix& state, double dx, int i, int j) {
-	// computes the first derivative of state(i,j) with respect to x using centered finite differemces
+	// computes the second derivative of state(i,j) with respect to x using centered finite differemces
 	// with 4th order accuracy.
 	int dim = state.size();
 	complex<double> df_dxx = 0.0;
@@ -36,7 +36,7 @@ complex<double> diff_xx(const Matrix& state, double dx, int i, int j) {
 	return df_dxx;
 }
 complex<double> diff_yy(const Matrix& state, double dy, int i, int j) {
-	// computes the first derivative of state(i,j) with respect to y using centered finite differemces
+	// computes the second derivative of state(i,j) with respect to y using centered finite differemces
 	// with 4th order accuracy.
 	int dim = state.size();
 	complex<double> df_dyy = 0.0;

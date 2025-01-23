@@ -3,6 +3,7 @@
 #include <vector>
 #include <complex>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -33,7 +34,8 @@ public:
 		}
 		return tr;
 	}
-	Matrix& operator+(const Matrix& other) {
+	Matrix operator+(const Matrix& other) {
+		if (dim != other.size()) throw invalid_argument("Matrices must have the same dimension for addition.");
 		Matrix res(dim);
 		for (int i = 0; i < dim; i++) {
 			for (int j = 0; j < dim; j++) {
@@ -42,7 +44,15 @@ public:
 		}
 		return res;
 	}
-	friend Matrix& operator*(complex<double> x, Matrix& M) {
+	void print() const {
+		for (int i = 0; i < dim; i++) {
+			for (int j = 0; j < dim; j++) {
+				cout << elem[i][j] << " ";
+			}
+			cout << "\n";
+		}
+	}
+	friend Matrix operator*(complex<double> x, const Matrix& M) {
 		Matrix res(M.size());
 		for (int i = 0; i < M.size(); i++) {
 			for (int j = 0; j < M.size(); j++) {
